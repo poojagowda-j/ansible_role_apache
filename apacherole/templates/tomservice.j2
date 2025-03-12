@@ -1,0 +1,16 @@
+[Unit]
+Description=Apache Tomcat
+After=network.target
+
+[Service]
+User={{ tomcat_user }}
+Group={{ tomcat_group }}
+Type=forking
+Environment=CATALINA_PID={{ tomcat_install_dir }}/temp/tomcat.pid
+Environment=CATALINA_HOME={{ tomcat_install_dir }}
+ExecStart={{ tomcat_install_dir }}/bin/startup.sh
+ExecStop={{ tomcat_install_dir }}/bin/shutdown.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

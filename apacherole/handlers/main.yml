@@ -1,0 +1,7 @@
+---
+# handlers file for apacherole
+- name: restart tomcat
+  systemd:
+    name: tomcat
+    state: restarted
+  become: yes
